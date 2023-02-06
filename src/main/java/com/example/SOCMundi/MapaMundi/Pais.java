@@ -23,11 +23,14 @@ public class Pais {
 	public Pais(String nombre, Pregunta pregunta){
 		this.nombre = nombre;
 		this.pregunta = pregunta;
-
 	}
 
-	public Pregunta mostrarPregunta(Rango rango){
-		return pregunta.esAptaParaMostrar(rango)?pregunta:null;
+	public Pregunta mostrarPregunta(RangoPersona rango){
+		if(pregunta.esAptaParaMostrar(rango)){
+			return pregunta;
+		} else {
+			return null;
+		}
 	}
 
 	public Integer puntosTotales(){
@@ -38,7 +41,8 @@ public class Pais {
 		return pregunta;
 	}
 
-	public void setPregunta(Pregunta p){
-		this.pregunta = p;
+	public void setPregunta(Pregunta pregunta){
+		this.pregunta = pregunta;
 	}
+	public String getNombre(){return nombre;}
 }

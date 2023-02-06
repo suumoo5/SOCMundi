@@ -8,7 +8,7 @@ public class Persona {
 	private int puntuacion;
 	private Usuario usuario;
 	private MapaMundi mapamundi;
-	private Rango rango;
+	private RangoPersona rango;
 
 	public Persona(String nombre, String apellido, Usuario usuario, MapaMundi mapamundi){
 		this.nombre = nombre;
@@ -32,8 +32,10 @@ public class Persona {
 	public String nombreDelRango(){
 		return rango.getNombre();
 	}
-
-	public void setRango(Rango rango){
+	public void setRango(RangoPersona rango){
 		this.rango = rango;
+	}
+	public Integer getPuntuacion(){
+		return puntuacion;
 	}
 }

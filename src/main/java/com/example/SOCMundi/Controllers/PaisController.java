@@ -27,6 +27,11 @@ public class PaisController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Pais>> getPais(@PathVariable ObjectId id){
-        return new ResponseEntity<Optional<Pais>>(servicioPais.getPais(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Pais>>(servicioPais.getPaisById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/pais/{nombre}")
+    public ResponseEntity<Optional<Pais>> getPaisByNombre(@PathVariable String nombre){
+        return new ResponseEntity<Optional<Pais>>(Optional.ofNullable(servicioPais.getPaisByNombre(nombre)), HttpStatus.OK);
     }
 }

@@ -1,11 +1,11 @@
 package com.example.SOCMundi.Persona;
 
-public class Principiante extends Rango{
+public class Principiante extends RangoPersona {
 	public Principiante(){
 		super("Principiante",100);
 	}
 
-	public Rango proximoRango(){
+	public RangoPersona proximoRango(){
 		return new Intermedio();
 	}
 }

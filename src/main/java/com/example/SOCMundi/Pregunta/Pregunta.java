@@ -1,51 +1,54 @@
 package com.example.SOCMundi.Pregunta;
 
 import com.example.SOCMundi.Persona.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import java.util.List;
-
+@Document(collection = "pregunta")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pregunta {
 	@Id
 	private ObjectId id;
-	private String imdbId;
-	private String pregunta;
+	private String preguntaStr;
 	private String respuesta;
 	private Integer puntos;
-	private Rango rango;
-	@DocumentReference
-	private List<Opcion> opciones;
+	private String rango;
 	private boolean contestada;
 
-	public Pregunta(String pregunta, String respuesta, Integer puntos, Rango rango, List<Opcion> opciones){
-		this.pregunta = pregunta;
+	public Pregunta(String pregunta, String respuesta, Integer puntos, String rango){
+		this.preguntaStr = pregunta;
 		this.respuesta = respuesta;
 		this.puntos = puntos;
 		this.rango = rango;
-		this.opciones = opciones;
 		this.contestada = false;
 	}
 
-	public boolean esAptaParaMostrar(Rango rango){
-		return this.rango.esMismoRango(rango);
+	public boolean esAptaParaMostrar(RangoPersona rango){
+		return this.rango.equals(rango.getNombre());
 	}
 
-	public boolean esCorrecta(Opcion opcion){
-		if(opcion.getOpcion().equals(respuesta)){
-			contestada = true;
-			return true;
-		}
-		return false;
+	public boolean opcionEsCorrecta(String opcion){
+		return opcion.equals(respuesta);
 	}
 
+	public void responder(){
+		this.contestada = true;
+	}
+
+	public ObjectId getId(){
+		return id;
+	}
 	public String getPregunta(){
-		return pregunta;
+		return preguntaStr;
 	}
 	public String getNombreRango(){
-		return rango.getNombre();
+		return rango;
 	}
 	public Integer getPuntos(){
 		return puntos;

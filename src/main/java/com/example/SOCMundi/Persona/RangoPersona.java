@@ -1,17 +1,16 @@
 package com.example.SOCMundi.Persona;
 
-public abstract class Rango {
+public abstract class RangoPersona {
 	private String nombre;
 	private Integer maximo;
-	private Rango proximoRango;
 
-	public Rango(String nombre, Integer maximo){
+	public RangoPersona(String nombre, Integer maximo){
 		this.nombre = nombre;
 		this.maximo = maximo;
 	}
 
-	public abstract Rango proximoRango();
-	public boolean esMismoRango(Rango rango){
+	public abstract RangoPersona proximoRango();
+	public boolean esMismoRango(RangoPersona rango){
 		return nombre.equals(rango.getNombre());
 	}
 	public String getNombre(){

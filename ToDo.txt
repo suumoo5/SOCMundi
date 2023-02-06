@@ -1,0 +1,4 @@
+- Terminar la parte de persistencia. Preguntas dentro de Paises.
+- Encontrar un mapamundi interactivo
+- Ver como insertar un .html en el controller
+- Hacer que no se puedan ingresar preguntas repetidas
